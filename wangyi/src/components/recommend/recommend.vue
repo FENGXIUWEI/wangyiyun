@@ -26,7 +26,7 @@
             <div class="hot-item" v-for="item in newsong" :key="item.song.id" >
               <a href="">
                 <div class="img-box">
-                  <img :src="item.song.album.picUrl"/>
+                  <img v-lazy="item.song.album.picUrl"/>
                 </div>
                 <p class="sub-title">{{item.name}}</p>
               </a>
@@ -39,7 +39,6 @@
     </scroll>
   </div>
 </template>
-
 <script>
 import axios from 'axios'
 import Slider from '@/common/slider/slider'

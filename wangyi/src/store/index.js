@@ -1,24 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as actions from './actions'
+import * as getters from './getters'
+import state from './state'
+import mutations from './mutations'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  state () {
-    return {
-      user: {}
-    }
-  },
-  actions: {
-    editUser (ctx, data) {
-      console.log(data)
-      ctx.commit('editUser', data)
-    }
-  },
-  mutations: {
-    editUser (state, data) {
-      state.user = data
-    }
-  }
+  actions,
+  getters,
+  state,
+  mutations
 })
 export default store

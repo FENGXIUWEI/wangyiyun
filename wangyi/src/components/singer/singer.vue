@@ -1,32 +1,17 @@
 <template>
   <div class="singer">
-    <scroll v-show="rec.length" class="scroll-wrap" @scroll="scroll">
-    <div>
-    <div v-for="item in rec" :key="item.id" ref="singerItem">
-      <p class="title">{{item.title}}</p>
-      <div v-for="key in item.items" :key="key.id" class="pic-box">
-        <div class="picUrl">
-          <img v-lazy="key.picUrl"/>
-        </div>
-        <p class="pictitle">{{key.name}}</p>
-      </div>
+    <div v-if="rec.length" >
+      <list :data="rec" ></list>
     </div>
-    </div>
-    </scroll>
     <loading v-show="!rec.length">
     </loading>
-    <div class="alphabet" >
-      <span v-for="(item,index) in rec" :key="index">
-        {{item.title}}
-      </span>
-    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import {baseUrl} from '@/assets/js/config.js'
-import Scroll from '@/common/scroll/scroll'
+import List from '@/common/list/list'
 import Loading from '@/common/loading/loading'
 var pinyin = require('pinyin')
 const HOST_TITLE = '热门'
@@ -36,26 +21,23 @@ export default {
   data () {
     return {
       artists: [],
-      rec: [],
-      scrollY: -1
+      rec: []
     }
   },
-  created () {
-  },
   components: {
-    Scroll,
-    Loading
+    Loading,
+    List
   },
   mounted () {
     setTimeout(() => {
       this.initSinger()
-      this.calculateHeight()
     }, 20)
   },
   methods: {
     initSinger () {
       axios.get(`${baseUrl}/top/artists?limit=100`).then((res) => {
         this.rec = this.normalSinger(res.data.artists)
+        this.calculateHeight()
       })
     },
     normalSinger (data) {
@@ -110,19 +92,6 @@ export default {
       // 将数据进行合并
       hot = hot.concat(ret)
       return hot
-    },
-    calculateHeight () {
-      console.log(JSON.stringify(this.$refs))
-    },
-    // 滚动的时候获取y值
-    scroll (pos) {
-      this.scrollY = pos.y
-    }
-  },
-  watch: {
-    // 监听data的变化
-    scrollY (newY) {
-      console.log(newY)
     }
   }
 }
@@ -130,54 +99,6 @@ export default {
 
 <style scoped>
 .singer{
-  position:relative;
-  z-index:1;
-}
-.scroll-wrap{
-  height:500px;
-  overflow:hidden;
-}
-.title{
-  height:40px;
-  line-height:40px;
-  font-size:26px;
-  padding-left:20px;
-  background:#d5d5d5;
-}
-
-.pic-box{
-  padding:10px 20px;
-  border-bottom:1px solid #d5d5d5;
-  background:white;
-  align-items: center;
-  display:flex;
-}
-.picUrl{
-  flex:0 1 80px;
-}
-.picUrl img{
-  width:80px;
-  height:80px;
-}
-.pictitle{
-  padding-left:20px;
-  flex:1;
-  font-size:26px;
-}
-.alphabet{
-  width:60px;
-  position:absolute;
-  top:100px;
-  right:0;
-}
-.alphabet span{
-  display:block;
-  text-align:center;
-  font-size:24px;
-  width:60px;
-  height:40px;
-  font-weight:bold;
-  color:#757575;
-  line-height:40px;
+  position: relative;
 }
 </style>

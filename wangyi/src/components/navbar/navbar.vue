@@ -6,7 +6,7 @@
     <router-link tag="div" to="/singer" class="tab-item">
       <span class="tab-link">歌手</span>
     </router-link>
-    <router-link tag="div" to="/home" class="tab-item">
+    <router-link tag="div" to="/rank" class="tab-item">
       <span class="tab-link">排行</span>
     </router-link>
     <router-link tag="div" to="/search" class="tab-item">
@@ -31,13 +31,14 @@ export default {
   font-size:34px;
   height:92px;
   line-height:92px;
+  cursor:pointer;
   display:inline-block;
 }
 .tab-link{
   padding:23px 10px;
 
 }
-.tab-item.active .tab-link{
+.tab-item.router-link-active .tab-link{
   border-bottom:5px solid red;
 }
 </style>

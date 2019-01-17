@@ -12,6 +12,7 @@
 import WyHeader from '@/components/wyheader/wyheader'
 import NavBar from '@/components/navbar/navbar'
 import TabBar from '@/components/tabbar/tabbar'
+import {mapGetters} from 'vuex'
 export default {
   name: 'home',
   components: {
@@ -19,8 +20,13 @@ export default {
     NavBar,
     TabBar
   },
+  computed: {
+    ...mapGetters([
+      'user'
+    ])
+  },
   mounted () {
-    if (!this.$store.state.user.loginType) {
+    if (!this.user.loginType) {
       //  this.$router.push('/')
     }
   }
