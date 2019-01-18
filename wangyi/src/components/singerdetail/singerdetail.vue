@@ -1,5 +1,6 @@
 <template>
-   <div class="music-list">
+   <div class="music-list" >
+     <div>
      <div class="header" ref="header">
        <div class="back">
          <i class="fa fa-angle-left"></i>
@@ -28,12 +29,14 @@
        </div>
      </div>
      </div>
+     </div>
    </div>
 </template>
 
 <script>
 import {baseUrl} from '@/assets/js/config.js'
 import SongList from '@/common/song-list/song-list'
+import Loading from '@/common/loading/loading'
 import {mapActions} from 'vuex'
 export default {
   name: 'singerdetail',
@@ -78,7 +81,8 @@ export default {
   computed: {
   },
   components: {
-    SongList
+    SongList,
+    Loading
   }
 }
 </script>
