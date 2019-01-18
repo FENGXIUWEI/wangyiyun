@@ -2,17 +2,18 @@
   <div class="header-wrap" ref="headerWrap">
     <div class="icon">
       <a href="#">
-        <img src="@/assets/img/voice.png"/>
+        <i class="iconfont icon-yuyin"></i>
       </a>
     </div>
     <div class="input">
       <span>
+        <i class="iconfont icon-chaxun"></i>
         搜索音乐,歌词
       </span>
     </div>
     <div class="icon">
       <a href="#">
-        <img src="@/assets/img/play.png"/>
+        <i class="iconfont icon-zhengzaibofang"></i>
       </a>
     </div>
   </div>
@@ -40,11 +41,15 @@ export default {
   display:block;
   margin:0 auto;
   width:56px;
-  height:56px;
+  height:66px;
+  text-align:center;
+  line-height:66px;
+  outline: none;
+  color:white;
+  text-decoration: none;
 }
-.icon img{
-  width:56px;
-  height:56px;
+.icon i{
+  font-size:48px;
 }
 .input{
   display:inline-block;
@@ -60,5 +65,8 @@ export default {
   font-size:30px;
   color:#88898d;
   letter-spacing: 3px;
+}
+.input span i{
+  font-size:34px;
 }
 </style>

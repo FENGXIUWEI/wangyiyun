@@ -7,6 +7,7 @@ import axios from 'axios'
 import store from './store/index'
 import '@/assets/js/rem.js'
 import VueLazyLoad from 'vue-lazyload'
+import './assets/iconfont/iconfont.css'
 import {post, fetch} from './assets/js/http.js'
 Vue.prototype.$post = post
 Vue.prototype.$fetch = fetch
