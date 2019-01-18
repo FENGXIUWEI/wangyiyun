@@ -7,7 +7,9 @@ import axios from 'axios'
 import store from './store/index'
 import '@/assets/js/rem.js'
 import VueLazyLoad from 'vue-lazyload'
-
+import {post, fetch} from './assets/js/http.js'
+Vue.prototype.$post = post
+Vue.prototype.$fetch = fetch
 Vue.config.productionTip = false
 Vue.use(VueLazyLoad, {
   error: require('@/assets/img/default.png'),

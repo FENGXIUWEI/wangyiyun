@@ -12,6 +12,7 @@ import SingerDetail from '@/components/singerdetail/singerdetail'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/helloworld',
